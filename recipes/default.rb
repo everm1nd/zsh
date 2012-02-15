@@ -31,3 +31,9 @@ when "centos"
     action :install
   end
 end
+
+node[:zsh][:users].each do |user|
+  execute "change shell for #{user}" do
+    command "sudo chsh -s /bin/zsh #{user}"
+  end
+end
